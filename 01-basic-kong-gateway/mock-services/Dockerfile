@@ -1,6 +1,6 @@
-FROM node:20-alpine3.18
+FROM node:18
 
-RUN npm install -g json-server@0.17.4
+RUN npm install -g json-server
 WORKDIR /data
 
 EXPOSE 3030
