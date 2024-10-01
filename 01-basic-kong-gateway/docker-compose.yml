@@ -42,7 +42,7 @@ services:
       interval: 30s
       timeout: 30s
       retries: 3
-    restart: on-failure
+    restart: unless-stopped
     stdin_open: true
     tty: true
     networks:
@@ -61,7 +61,7 @@ services:
       <<: *kong-env
     networks:
       - kong-net
-    restart: on-failure
+    restart: unless-stopped
 
   kong:
     image: kong:3.6
@@ -90,7 +90,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 10
-    restart: on-failure:5
+    restart: unless-stopped
     read_only: true
     depends_on:
       - kong-database
