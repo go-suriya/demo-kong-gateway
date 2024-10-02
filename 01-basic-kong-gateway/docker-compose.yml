@@ -21,6 +21,7 @@ volumes:
     driver_opts:
       type: tmpfs
       device: tmpfs
+  uptime-kuma:
 
 services:
   kong-database:
@@ -101,4 +102,13 @@ services:
       - ./config:/opt/kong
     security_opt:
       - no-new-privileges
+  
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma:/app/data
   
