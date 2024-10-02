@@ -62,7 +62,7 @@ services:
       <<: *kong-env
     networks:
       - kong-net
-    restart: unless-stopped
+    restart: always
 
   kong:
     image: kong:3.6
@@ -92,7 +92,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 10
-    restart: unless-stopped
+    restart: always
     read_only: true
     depends_on:
       - kong-database
